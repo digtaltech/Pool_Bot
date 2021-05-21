@@ -83,17 +83,13 @@ def withdrawal_validate(message):
                 else:
                     bot.send_message(message.from_user.id,
                                      'Недостаточно средств')
-                    bot.register_next_step_handler(
-                        message, withdrawal_validate)
             except BaseException as ex:
                 bot.send_message(message.from_user.id, str(ex))
         else:
             bot.send_message(message.from_user.id, 'Минимальный вывод от 0.1')
-            bot.register_next_step_handler(message, withdrawal_validate)
     except BaseException:
         bot.send_message(message.from_user.id,
                          'Данные указаны в неверном формате')
-        bot.register_next_step_handler(message, withdrawal_validate)
 
 
 @bot.message_handler(commands=['bank'])
